@@ -1,5 +1,5 @@
 # Author: Cyril Harvey
-# FileName: passGen.py
+# FileName: passwordGen.py
 # Date: 11 - 06 - 2018
 # Purpose: to create modified passwords
 
