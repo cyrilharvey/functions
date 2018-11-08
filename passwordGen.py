@@ -1,11 +1,12 @@
 # Author: Cyril Harvey
-# FileName: functionsTest
+# FileName: passGen.py
 # Date: 11 - 06 - 2018
 # Purpose: to create modified passwords
 
 import random
 
-def strBool(char):
+
+def strbool(char):
     a = True
     if char == 'y':
         a = True
@@ -15,7 +16,8 @@ def strBool(char):
         print("Error exiting function...")
     return a
 
-def passGen():
+
+def passgen():
 
     # Declares the list of available characters to the program
 
@@ -24,6 +26,7 @@ def passGen():
     u = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     n = "0123456789"
     comb = ""
+    password = ""
     psswrd = ""
 
     char = int(input("How many characters should the password be? : "))
@@ -36,10 +39,10 @@ def passGen():
     # into a function that changes them into booleans so the program
     # can use them for logical calculations
 
-    upperLower = strBool(uL)
-    special = strBool(spec)
-    numbers = strBool(num)
-    store = strBool(sto)
+    upperLower = strbool(uL)
+    special = strbool(spec)
+    numbers = strbool(num)
+    store = strbool(sto)
 
     # Determines what characters the program has at its disposal for creating
     # the password and compiles them into the string comb
@@ -56,8 +59,13 @@ def passGen():
     # Takes the comb string and chooses reandom characters from it and formats
     # it into the string psswrd with the disired length
 
-    psswrd = psswrd.join(random.sample(comb, char))
+    # psswrd = psswrd.join(random.sample(comb, char))
 
+    # Makes each character in the password randomized separately so that the
+    # password function allows for repetition
+
+    for i in range(char):
+        psswrd += password.join(random.sample(comb, 1))
 
     # Decides whether the user wanted to save the password in a .txt file amd
     # collects a name, or just prints the password into the terminal
@@ -72,12 +80,13 @@ def passGen():
         print("The password generated is: " + psswrd)
         print("************************************")
 
+
 run = True
 
 while run:
     print("\n")
     print("-------------------------------------")
-    print("-Welcome to Cyril's garbage tune-up!-")
+    print(" Welcome to Cyril's garbage tune-up! ")
     print("-------------------------------------")
     print("Enter '1' for the Password Generator")
     print("Enter 'quit' to exit the program")
@@ -87,7 +96,7 @@ while run:
     # Decides what, if any, program the user wants to run
 
     if fun == "1":
-        passGen()
+        passgen()
     elif fun == "quit":
         run = False
     else:
